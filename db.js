@@ -1,7 +1,9 @@
 const knex = require('knex');
 const fs = require('fs');
 
-fs.unlinkSync('./db.sqlite');
+if (fs.existsSync('./db.sqlite')) {
+  fs.unlinkSync('./db.sqlite');
+}
 
 const db = knex({
   client: 'sqlite3',
